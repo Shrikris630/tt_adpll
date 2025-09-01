@@ -27,9 +27,7 @@ module adpll_5bit(
   
   wire[31:0] up_error, dwn_error;
   wire[4:0] bin_up_error, bin_dwn_error, bin_error;
-  wire[4:0]error_in;
   wire error_sign;
-  wire[4:0] prop_out;
   wire freq_div_buf;
   wire clk2x;
 
@@ -57,3 +55,4 @@ module adpll_5bit(
   assign fb_clk = (ndiv==4'd0)?dco_out:freq_div_buf;
   
 endmodule
+
