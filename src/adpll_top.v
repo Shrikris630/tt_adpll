@@ -8,7 +8,7 @@ module adpll_top(
   input wire clk90, 
   input wire clk_ref,
   input wire clr,
-  input wire program,
+  input wire pgm,
   input wire out_sel,
   input wire [2:0]param_sel, 
   inout fb_clk,
@@ -35,8 +35,8 @@ module adpll_top(
   
  
    
-   //Program mode : Program all PLL the parameters
-   // Programming is done in cycle by cycle manner, where we can sequentially program below
+   //pgm mode : pgm all PLL the parameters
+   // pgmming is done in cycle by cycle manner, where we can sequentially pgm below
    //  *** frequency divider ***
    //  1. frequency division for frequency divider block
    //  *** Loop Filter parameters ***
@@ -47,13 +47,13 @@ module adpll_top(
    //  5. dco_thresold
    //  6. dco_gain
    
-   // Select the programming option
-   assign ndiv_ld = (program) ? (param_sel==3'd0)?1:0:0;
-   assign alpha_en = (program) ? (param_sel==3'd1)?1:0:0;
-   assign beta_en = (program) ? (param_sel==3'd2)?1:0:0;
-   assign dco_offset_en = (program) ? (param_sel==3'd3)?1:0:0;
-   assign dco_thresh_en = (program) ? (param_sel==3'd4)?1:0:0;
-   assign kdco_en = (program) ? (param_sel==3'd5)?1:0:0;
+   // Select the pgmming option
+   assign ndiv_ld = (pgm) ? (param_sel==3'd0)?1:0:0;
+   assign alpha_en = (pgm) ? (param_sel==3'd1)?1:0:0;
+   assign beta_en = (pgm) ? (param_sel==3'd2)?1:0:0;
+   assign dco_offset_en = (pgm) ? (param_sel==3'd3)?1:0:0;
+   assign dco_thresh_en = (pgm) ? (param_sel==3'd4)?1:0:0;
+   assign kdco_en = (pgm) ? (param_sel==3'd5)?1:0:0;
 
 
    // outputs filter data or integrator's data based on out_sel variable 
@@ -62,7 +62,7 @@ module adpll_top(
   adpll_5bit u0( .clk(clk), .reset(rst), .clk90(clk90), .clk_ref(clk_ref),.ndiv(ndiv),.alpha_var(alpha_var_buf),.beta_var(beta_var_buf),.dco_offset(dco_offset_buf), .dco_thresh_val(dco_thresh_buf), .kdco(kdco_buf), .fb_clk(fb_clk), .integ_out(integ_out), .integ_sign(integ_sign), .filter_out(filter_out),.filter_sign(filter_sign), .dco_out(dco_out));
        
        
-  // Perform programming    
+  // Perform pgmming    
    always@(posedge ndiv_ld) begin
      if(~clr) 
        ndiv <= pgm_value[3:0];
@@ -103,3 +103,4 @@ module adpll_top(
    end
    
 endmodule   
+
