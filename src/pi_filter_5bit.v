@@ -18,8 +18,6 @@ module pi_filter_5bit(
   reg integ_store_sign;
   wire [4:0]integ_var;
   wire [4:0]prop_var;
-  wire [4:0]integ_out_buf;
-  wire integ_sign_buf;
  
  
   //1, Proportional Path
@@ -46,4 +44,5 @@ module pi_filter_5bit(
   //3. filter_out
   acs_5bit acs1(.sign_in1(error_sign), .in1(prop_var), .sign_in2(integ_sign),.in2(integ_out), .sum(filter_out), .sign_out(filter_sign));
   
+
 endmodule  
