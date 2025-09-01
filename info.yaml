@@ -22,6 +22,7 @@ project:
     - "pi_filter_5bit.v"
     - "ones_counter_5bit.v"
     - "freq_divider_5bit.v"
+    - "dco_5bit.v"
     - "adpll_top.v"
     - "adpll_5bit.v"
     - "acs_5bit.v"
