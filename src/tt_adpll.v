@@ -39,7 +39,9 @@ module tt_um_adpll (
   wire [4:0] dout;
   wire sign;
   wire dummy;
-  wire dummy2,dummy3;
+  wire dummy2;
+  wire dummy3;
+  wire dummy4;
   
  
   assign samp_clk = clk;                 // 50MHz clock
@@ -52,14 +54,21 @@ module tt_um_adpll (
   assign param_sel = ui_in[7:5];         // Parameter selector : Select the parameter to be pgmmed
   assign pgm_value = uio_in[6:2];        // pgm value
   assign dummy2 = uio_in[0];
- assign dummy3 = uio_in[1] ;
+  assign dummy3 = uio_in[1];
   assign dummy = uio_in[7] ; 
   assign uio_out[0] = fb_clk;            // Feedback clock output
   assign uio_out[1] = dco_out;           // DCO output
+ assign uio_out[2] = dummy2;
+ assign uio_out[3] = dummy3;
+ assign uio_out[4] = dummy2;
+ assign uio_out[5] = dummy3;
+ assign uio_out[6] = dummy2;
+ assign uio_out[7] = dummy4;
   assign uo_out[4:0] = dout;
   assign uo_out[5] = sign;
   assign uo_out[6] = ~dummy;
   assign uo_out[7] = dummy;
+  assign dummy4 = ena;
   
  // IO enable 
   assign uio_oe[1:0]=2'b11;
@@ -75,6 +84,7 @@ module tt_um_adpll (
 
 
 endmodule
+
 
 
 
