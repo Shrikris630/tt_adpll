@@ -51,8 +51,8 @@ module tt_um_adpll (
   assign out_sel= ui_in[4] ;             // Output selector: set 0 to get filter output and 1 to get integral path output
   assign param_sel = ui_in[7:5];         // Parameter selector : Select the parameter to be pgmmed
   assign pgm_value = uio_in[6:2];        // pgm value
-  assign dummy3 = uio_in[0];
- assign dummy4 = uio_in[1] ;
+  assign dummy2 = uio_in[0];
+ assign dummy3 = uio_in[1] ;
   assign dummy = uio_in[7] ; 
   assign uio_out[0] = fb_clk;            // Feedback clock output
   assign uio_out[1] = dco_out;           // DCO output
@@ -75,6 +75,7 @@ module tt_um_adpll (
 
 
 endmodule
+
 
 
 
