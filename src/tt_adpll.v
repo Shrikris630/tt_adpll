@@ -38,7 +38,9 @@ module tt_um_adpll (
   wire  [4:0]pgm_value;
   wire [4:0] dout;
   wire sign;
-  
+  wire dummy;
+
+ 
   assign samp_clk = clk;                 // 50MHz clock
   assign rst = rst_n;                    // Reset
   assign clk90 = ui_in[0];               // 50MHz with 90 degree phase-shift
@@ -48,11 +50,14 @@ module tt_um_adpll (
   assign out_sel= ui_in[4] ;             // Output selector: set 0 to get filter output and 1 to get integral path output
   assign param_sel = ui_in[7:5];         // Parameter selector : Select the parameter to be pgmmed
   assign pgm_value = uio_in[6:2];        // pgm value
-  assign uio_in[7] = 1'b0;
+  assign dummy = uio_in[7] ; 
   assign uio_out[0] = fb_clk;            // Feedback clock output
   assign uio_out[1] = dco_out;           // DCO output
   assign uo_out[4:0] = dout;
   assign uo_out[5] = sign;
+  assign uo_out[6] = ~dummy;
+  assign uo_out[7] = dummy;
+ 
  // IO enable 
   assign uio_oe[1:0]=2'b11;
   assign uio_oe[6:2]= 5'd0;
@@ -67,6 +72,7 @@ module tt_um_adpll (
 
 
 endmodule
+
 
 
 
