@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2024 Your Name
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: Apache-2.0 */
  
 `include "adpll_top.v"
 `include "adpll_5bit.v"
@@ -9,7 +9,7 @@
 `include "acs_5bit.v"
 `include "pi_filter_5bit.v"
 `include "dco_5bit.v"
-`include "freq_divider_5bit.v" */
+`include "freq_divider_5bit.v"
 
 `default_nettype none
 
@@ -67,5 +67,6 @@ module tt_um_adpll (
 
 
 endmodule
+
 
 
