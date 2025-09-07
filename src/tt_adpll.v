@@ -54,9 +54,9 @@ module tt_um_adpll (
   assign uo_out[4:0] = dout;
   assign uo_out[5] = sign;
  // IO enable 
-  assign uio_en[1:0]=2'b11;
-  assign uio_en[6:2]= 5'd0;
-  assign uio_en[7] = 1'b0;
+  assign uio_oe[1:0]=2'b11;
+  assign uio_oe[6:2]= 5'd0;
+  assign uio_oe[7] = 1'b0;
  
   // adpll top-level block
   adpll_top u0( .clk(samp_clk), .rst(rst),.clk90(clk90),.clk_ref(clk_ref),.clr(clr),.pgm(pgm), .out_sel(out_sel),.param_sel(param_sel),.fb_clk(fb_clk),.dco_out(dco_out),.pgm_value(pgm_value),.dout(dout),.sign(sign));
@@ -67,6 +67,7 @@ module tt_um_adpll (
 
 
 endmodule
+
 
 
 
