@@ -63,44 +63,48 @@ module adpll_top(
        
        
   // Perform pgmming    
-   always@(posedge ndiv_ld) begin
+  always@(posedge ndiv_ld or posedge clr) begin
      if(~clr) 
        ndiv <= pgm_value[3:0];
+     else
+       ndiv <= 4'd0;  
    end
    
-   always@(posedge alpha_en) begin
+  always@(posedge alpha_en or posedge clr) begin
      if(~clr)
        alpha_var_buf <= pgm_value;
+     else
+       alpha_var_buf <= 5'd0;
    end
    
-   always@(posedge beta_en) begin
+  always@(posedge beta_en or posedge clr) begin
     if(~clr)
       beta_var_buf <= pgm_value;
+    else
+      beta_var_buf <= 5'd0;
    end
      
-   always@(posedge dco_offset_en) begin
+  always@(posedge dco_offset_en or posedge clr) begin
      if(~clr)
        dco_offset_buf <= pgm_value;
+     else
+       dco_offset_buf <= 5'd0;
    end
          
-   always@(posedge dco_thresh_en) begin
+  always@(posedge dco_thresh_en or posedge clr) begin
      if(~clr) 
        dco_thresh_buf <= pgm_value;
+     else
+       dco_thresh_buf <= 5'd0;
    end    
      
-   always@(posedge kdco_en) begin
+  always@(posedge kdco_en or posedge clr) begin
      if(~clr)
        kdco_buf <= pgm_value;
-   end
-   
-   always@(posedge clr) begin
-     alpha_var_buf <= 5'd0;
-     beta_var_buf <= 5'd0;
-     dco_offset_buf <= 5'd0;
-     dco_thresh_buf <= 5'd0;
-     kdco_buf <= 5'd0;  
-     ndiv <= 4'd0;  
+     else
+       kdco_buf <= 5'd0;  
    end
    
 endmodule   
+
 
