@@ -13,7 +13,6 @@ module dco_5bit(
 );
 
   wire [4:0] ctrl_buf;
-  wire ctrl_sign_buf;
   wire [4:0] thresh;
   wire [4:0] thresh_buf, thresh_buf2;
   wire thresh_sign;
@@ -22,7 +21,6 @@ module dco_5bit(
 
   // 1. Buffer the control input for reset logic
   assign ctrl_buf = (reset) ? 5'd0 : ctrl;
-  assign ctrl_sign_buf = (reset) ? 1'b0 : ctrl_sign;
 
   // 2. Calculate phase (widen to 6 bits to prevent overflow in phase calculation)
   assign phase = (ctrl_buf * kdco)>>1;  // Multiply control value with DCO constant
@@ -58,4 +56,5 @@ module dco_5bit(
  
 
 endmodule
+
 
