@@ -13,6 +13,7 @@ module dco_5bit(
 );
 
   wire [4:0] ctrl_buf;
+  wire ctrl_sign_buf;
   wire [4:0] thresh;
   wire [4:0] thresh_buf, thresh_buf2;
   wire thresh_sign;
@@ -57,3 +58,4 @@ module dco_5bit(
  
 
 endmodule
+
